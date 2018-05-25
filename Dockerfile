@@ -1,3 +1,5 @@
+# PRETTY_NAME="Debian GNU/Linux 8 (jessie)"
+# VERSION="8 (jessie)"
 FROM node:carbon
 
 # Create app directory

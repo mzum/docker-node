@@ -9,7 +9,8 @@ LABEL TAG=${TAG}
 # https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 LABEL maintainer="mzum <mzum@mzum.org>"
 
-ENV NODE_JS_VERSION 1.0.0
+ENV NODE_JS_VERSION 0.0.0
+ENV TINI_VERSION v0.18.0
 
 # Update APT
 RUN set -ex; \
@@ -17,7 +18,10 @@ RUN set -ex; \
     apt-get dist-upgrade -yu; \
     apt-get dist-upgrade -yu;
 
-RUN apk add --no-cache tini;
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc /tini.asc
+RUN gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 \
+    && gpg --verify /tini.asc
 
 # Create app directory
 WORKDIR /usr/src/app

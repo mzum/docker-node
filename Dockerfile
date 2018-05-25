@@ -18,10 +18,10 @@ RUN set -ex; \
     apt-get dist-upgrade -yu; \
     apt-get dist-upgrade -yu;
 
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /sbin//tini
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc /tmp/tini.asc
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc /tini.asc
 RUN gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 \
-    && gpg --verify /tmp/tini.asc
+    && gpg --verify /tini.asc
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -42,6 +42,6 @@ COPY entrypoint.sh /
 
 EXPOSE 8080
 
-ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
+ENTRYPOINT ["/tini", "--", "/entrypoint.sh"]
 CMD [ "npm", "start" ]
 #

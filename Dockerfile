@@ -2,6 +2,11 @@
 # VERSION="8 (jessie)"
 FROM node:carbon
 
+# Update APT
+RUN apt-get dist-upgrade -yu
+RUN apt-get dist-upgrade -yu
+RUN apt-get dist-upgrade -yu
+
 # Create app directory
 WORKDIR /usr/src/app
 

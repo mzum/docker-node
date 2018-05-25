@@ -3,7 +3,7 @@
 
 # Starting node npm
 if [ -f "/usr/local/bin/npm" ]; then
-  echo "+++ Starting now /usr/local/bin/npm..."
+  echo "+++ Starting now /usr/local/bin/npm with node server.js..."
   
   cd /usr/src/app/
   

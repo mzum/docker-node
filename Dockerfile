@@ -39,6 +39,8 @@ RUN npm install
 COPY . .
 
 COPY entrypoint.sh /
+RUN chmod +x /tini
+
 
 EXPOSE 8080
 

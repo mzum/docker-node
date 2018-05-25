@@ -17,6 +17,8 @@ RUN set -ex; \
     apt-get dist-upgrade -yu; \
     apt-get dist-upgrade -yu;
 
+RUN apk add --no-cache tini;
+
 # Create app directory
 WORKDIR /usr/src/app
 

@@ -32,7 +32,10 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+COPY entrypoint.sh /
+
 EXPOSE 8080
 
-ENTRYPOINT ["/sbin/tini", "--", "/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
 CMD [ "npm", "start" ]
+#
